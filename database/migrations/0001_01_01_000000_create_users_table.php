@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+<<<<<<< HEAD
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
@@ -39,6 +40,80 @@ return new class extends Migration
     {
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
+=======
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+
+            $table->id();
+
+            // nama user
+            $table->string('name');
+
+            // username login
+            $table->string('username')->unique();
+
+            // email opsional
+            $table->string('email')->nullable()->unique();
+
+            // role utama
+            $table->enum('role', ['ktu', 'admin'])
+                ->default('admin');
+
+            // password login
+            $table->string('password');
+
+            // remember me
+            $table->rememberToken();
+
+            $table->timestamps();
+        });
+
+        // reset password
+        Schema::create('password_reset_tokens', function (Blueprint $table) {
+
+            $table->string('email')->primary();
+
+            $table->string('token');
+
+            $table->timestamp('created_at')->nullable();
+        });
+
+        // session login
+        Schema::create('sessions', function (Blueprint $table) {
+
+            $table->string('id')->primary();
+
+            $table->foreignId('user_id')
+                ->nullable()
+                ->index();
+
+            $table->string('ip_address', 45)
+                ->nullable();
+
+            $table->text('user_agent')
+                ->nullable();
+
+            $table->longText('payload');
+
+            $table->integer('last_activity')
+                ->index();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+
+        Schema::dropIfExists('password_reset_tokens');
+
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
         Schema::dropIfExists('sessions');
     }
 };

@@ -15,15 +15,20 @@ class BarangKeluar extends Model
         'tanggal_keluar',
         'tujuan',
         'keterangan',
+<<<<<<< HEAD
         'created_by',
     ];
 
     protected $casts = [
         'tanggal_keluar' => 'date',
+=======
+        'created_by'
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
     ];
 
     /*
     |--------------------------------------------------------------------------
+<<<<<<< HEAD
     | BOOT — otomatis update stok barang saat transaksi
     |--------------------------------------------------------------------------
     */
@@ -54,6 +59,9 @@ class BarangKeluar extends Model
     /*
     |--------------------------------------------------------------------------
     | RELATIONSHIPS
+=======
+    | RELATIONSHIP
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
     |--------------------------------------------------------------------------
     */
 
@@ -63,7 +71,11 @@ class BarangKeluar extends Model
         return $this->belongsTo(Barang::class);
     }
 
+<<<<<<< HEAD
     // relasi ke user yang input
+=======
+    // relasi ke user
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
     public function user()
     {
         return $this->belongsTo(User::class, 'created_by');

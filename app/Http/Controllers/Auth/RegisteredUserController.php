@@ -54,12 +54,15 @@ class RegisteredUserController extends Controller
                 'unique:' . User::class
             ],
 
+<<<<<<< HEAD
             // validasi role sesuai enum di database
             'role' => [
                 'required',
                 'in:admin,ktu'
             ],
 
+=======
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
             'password' => [
                 'required',
                 'confirmed',
@@ -69,6 +72,7 @@ class RegisteredUserController extends Controller
 
         $user = User::create([
 
+<<<<<<< HEAD
             'name'     => $request->name,
 
             'username' => $request->username,
@@ -76,6 +80,16 @@ class RegisteredUserController extends Controller
             'email'    => $request->email,
 
             'role'     => $request->role,
+=======
+            'name' => $request->name,
+
+            'username' => $request->username,
+
+            'email' => $request->email,
+
+            // default role
+            'role' => 'admin',
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
 
             'password' => Hash::make($request->password),
         ]);

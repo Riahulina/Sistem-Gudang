@@ -6,10 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+<<<<<<< HEAD
+=======
+    /**
+     * Run the migrations.
+     */
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
     public function up(): void
     {
         Schema::create('barangs', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
 
             // kode unik barang (misal: BRG-001)
             $table->string('kode_barang')->unique();
@@ -41,10 +48,18 @@ return new class extends Migration
                 ->constrained('users')
                 ->onDelete('cascade');
 
+=======
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
             $table->timestamps();
         });
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * Reverse the migrations.
+     */
+>>>>>>> 88ee3e1ad7e8585d6d15ead5c937f9d749a03d81
     public function down(): void
     {
         Schema::dropIfExists('barangs');
